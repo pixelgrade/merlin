@@ -1,0 +1,41 @@
+%heading {
+    display: block;
+    font-weight: bold;
+    text-transform: uppercase;
+    @include baseline();
+}
+
+.h0 {
+    @extend %heading;
+    @extend %fs62 !optional;
+}
+
+%h1 {
+    @extend %heading;
+    @extend %fs48 !optional;
+}
+
+%h2 {
+    @extend %heading;
+    @extend %fs40 !optional;
+}
+
+%h3 {
+    @extend %heading;
+    @extend %fs32 !optional;
+}
+
+%h4 {
+    @extend %heading;
+    @extend %fs20 !optional;
+}
+
+%h5 {
+    @extend %heading;
+    @extend %fs16 !optional;
+}
+
+%h6 {
+    @extend %heading;
+    @extend %fs13 !optional;
+}

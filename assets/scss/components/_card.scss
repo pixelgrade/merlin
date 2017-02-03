@@ -1,0 +1,89 @@
+/*
+
+    Card
+    ====
+
+
+    description:
+    ------------
+    a distinct peace piece of content usually displayed in lists (decks of cards)
+    the card components should visually define its own space (border, padding)
+    the space between cards should come from its container (grid, deck, masonry) or utility classes
+
+
+    expected markup:
+    ----------------
+    <div class="c-card  c-card--inverse">
+
+        <div class="c-card__media">
+            <img src="path/to/my-image.jpg">
+            ...
+        </div>
+
+        <h1 class="c-card__title"> ... </h1>
+        <p class="c-card__subtitle"> ... </p>
+
+        <footer class="c-card__footer">
+            ...
+        </footer>
+
+    </div>
+
+ */
+
+$card-padding:         16px                 !default;
+$card-background:      #F0F0F0              !default;
+$card-color:           #111                 !default;
+$card-border-width:    1px                  !default;
+$card-border-style:    solid                !default;
+$card-border-color:    #DDDDDD              !default;
+$card-radius:          0                    !default;
+
+.c-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    padding: $card-padding;
+    color: $card-color;
+    background: $card-background;
+
+    @if ($card-border-width != 0) {
+        border: $card-border-width $card-border-style $card-border-color;
+    }
+
+    @if ($card-radius != 0) {
+        border-radius: $card-radius;
+    }
+}
+
+.c-card__media {
+    img {
+        width: 100%;
+        display: block;
+    }
+}
+
+.c-card__footer {
+    margin-top: auto;
+}
+
+.c-card--inverse {
+    // cards that have an inversed color scheme or image used as background
+    position: relative;
+    background: $card-color;
+    color: $card-background;
+
+    .c-card__media {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.c-card--stack {
+    // @todo see WUpdates 'surface' class
+}

@@ -1,0 +1,69 @@
+/*
+
+    HERO
+    ====
+
+
+    description:
+    ------------
+
+
+    expected markup:
+    ----------------
+    <div class="c-hero  c-hero--half">
+
+        <div class="c-hero__background" style="background-image: ... ;"></div>
+
+        <div class="c-hero__background">
+            <img class="c-hero__image" src="path/to/my-image.jpg">
+        </div>
+
+        <div class="c-hero__content">
+            ...
+        </div>
+
+    </div>
+
+ */
+
+.c-hero {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 100vh;
+
+    text-align: center;
+}
+
+.c-hero--half       { min-height: 50vh; }
+.c-hero--one-third  { min-height: 33.333333vh; }
+.c-hero--two-thirds { min-height: 66.666666vh; }
+
+    .c-hero__background {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        &[style*="background-image"] {
+            background-size: cover;
+            background-position: center;
+        }
+    }
+
+        .c-hero__image {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+    .c-hero__content {
+        position: relative;
+        z-index: 1;
+    }

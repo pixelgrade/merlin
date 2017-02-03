@@ -1,0 +1,69 @@
+$baseline-unit:         1rem        !default;
+
+// default configration for reType
+$typeline-config: (
+    points: (0 1.2, 50 1.6, 200 1.8),
+    breakpoints: 1200px 760px 560px,
+    rules: (
+        'body': 16px,
+        'h1': 81px,
+        'h2': 54px,
+        'h3': 36px,
+        'h4': 24px
+    )
+) !default;
+
+$typeline-points:         map-get($typeline-config, points)         !default;
+$typeline-breakpoints:    map-get($typeline-config, breakpoints)    !default;
+$typeline-rules:          map-get($typeline-config, rules)          !default;
+
+$A: nth($typeline-points, 1);
+$B: nth($typeline-points, 2);
+$C: nth($typeline-points, 3);
+
+// returns Y value for a given font-size for the first breakpont
+// according to the given variable values
+@function getY($fontSize) {
+    $fontSize: strip-unit($fontSize);
+    @if $fontSize < nth($B, 1) {
+        // if given fontSize is smaller then B.x
+        // use an exponential function to determine Y value [ ie. y = ab^(x^3) ]
+        $a: nth($A, 2);
+        $b: (nth($B, 2) - nth($A, 2)) / pow(nth($B, 1), 3);
+        @return $a + $b * pow($fontSize, 3);
+    } @else {
+        // otherwise use a basic linear equation solving method
+        @return nth($B, 2) + (nth($C, 2) - nth($B, 2)) * ($fontSize - nth($B, 1)) / (nth($C, 1) - nth($B, 1));
+    }
+}
+
+// used to get the actual font-size for a given breakpoint
+@function getFontSize($fontSize, $breakpoint: false) {
+
+    $index: index($typeline-breakpoints, $breakpoint);
+    @if $index == null {
+        @return $fontSize * 1rem / $baseline-unit;
+    }
+
+    // we need to find values that are equally spread across the interval [1, getY($fontSize)] for each breakpoint we have
+    $y: getY($fontSize);
+    $ratio: ($y - 1) * $index / length($typeline-breakpoints) + 1;
+    @return round($fontSize / $ratio) * 1rem / $baseline-unit;
+}
+
+//
+@each $selector, $value in $typeline-rules {
+    #{$selector} {
+        font-size: $value * 1rem / $baseline-unit;
+    }
+}
+
+@each $breakpoint in $typeline-breakpoints {
+    @media only screen and (max-width: $breakpoint) {
+        @each $selector, $value in $typeline-rules {
+            #{$selector} {
+                font-size: getFontSize($value, $breakpoint);
+            }
+        }
+    }
+}
