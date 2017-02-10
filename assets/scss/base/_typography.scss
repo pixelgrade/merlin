@@ -1,8 +1,23 @@
-$font-size:             16px            !default;
+$font-size:             18px            !default;
 $line-height:           1.5             !default;
 
 // just set the desired baseline unit here
 // so we can use rem units to multiply it
+
+%alpha {
+    font-family: "Eczar", serif;
+    font-weight: 700;
+    color: $color-dark;
+}
+
+%beta {
+    font-family: "Gentium Basic", serif;
+}
+
+%gama {
+    font-family: "Woodford Bourne", serif;
+}
+
 html {
     font-size: percentage($baseline-unit/16px);
     text-rendering: optimizeLegibility;
@@ -10,6 +25,7 @@ html {
 }
 
 body {
+    @extend %beta;
     font-size: $font-size;
     line-height: $line-height;
 }
@@ -24,6 +40,44 @@ i,
 small {
     font-style: italic;
 }
+
+/* Headings */
+h1 {
+    @extend %alpha;
+    @include font-size(48px);
+    @include baseline(48px);
+}
+
+h2 {
+    @extend %alpha;
+    @include font-size(36px);
+    @include baseline(36px);
+}
+
+h3 {
+    @extend %alpha;
+    @include font-size(24px);
+    @include baseline(24px);
+}
+
+@include query-below($lap) {
+
+    h1 {
+        @include font-size(30px);
+        @include baseline(30px);
+    }
+
+    h2 {
+        @include font-size(24px);
+        @include baseline(24px);
+    }
+
+    h3 {
+        @include font-size(21px);
+        @include baseline(21px);
+    }
+}
+
 
 @mixin render-typography-styles() {
     h1          { @extend %h1           !optional; }
@@ -44,6 +98,25 @@ small {
     dl          { @extend %dl           !optional; }
     ul          { @extend %ul           !optional; }
     ol          { @extend %ol           !optional; }
+}
+
+/* Paragraphs */
+p {
+    margin-top: 0;
+    @include font-size(18px);
+
+    @include rhythm(margin-bottom, 2);
+}
+
+a {
+    color: $color-dark;
+
+    &.big-link {
+        font-family: 'Eczar';
+        @include font-size(20px);
+        color: $black;
+        font-weight: 500;
+    }
 }
 
 .wrap {

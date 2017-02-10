@@ -1,13 +1,12 @@
 %heading {
     display: block;
     font-weight: bold;
-    text-transform: uppercase;
     @include baseline();
 }
 
 .h0 {
     @extend %heading;
-    @extend %fs62 !optional;
+    @extend %fs48 !optional;
 }
 
 %h1 {

@@ -1,0 +1,104 @@
+%color-list {
+    ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+
+        li {
+            width: 32px;
+            height: 32px;
+            border: 2px solid transparent;
+            border-radius: 100%;
+            background: red;
+            margin-right: 14px;
+            position: relative;
+
+            &:after {
+                opacity: 1;
+                content: "";
+                position: absolute;
+                bottom: -17px;
+                left: 50%;
+                margin-left: -9px;
+                border: 9px solid transparent;
+                border-bottom-color: $color-light;
+            }
+
+            &:hover {
+                opacity: 1;
+                transition: opacity .1s ease-in-out;
+                pointer-events: none;
+            }
+        }
+    }
+    .tooltip {
+        @extend %content-box;
+
+        margin-top: 15px;
+        margin-bottom: 35px;
+        padding: 18px 24px;
+    }
+}
+
+.choose-primary-color {
+    @extend %color-list;
+}
+
+.generated-colors {
+    @extend %color-list;
+
+    ul > li {
+        width: 45px;
+        height: 45px;
+        margin-right: 20px;
+    }
+}
+
+.generated-color-palette {
+    position: relative;
+    min-height: 242px;
+    margin: 100px 0;
+    background: radial-gradient(circle, $alpha 0%, $alpha-mix 37.11%, $beta 56.89%, $gamma-mix 80.38%, $gamma 100%);
+
+    > span {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -54px;
+        margin-top: -54px;
+        display: block;
+        width: 108px;
+        height: 108px;
+        border-radius: 100%;
+        background: $beta;
+        font-family: "Open Sans";
+        font-weight: 700;
+        @include font-size(13px);
+        text-align: center;
+        line-height: 108px;
+        color: $color-dark;
+
+        &.alpha {
+            margin-left: -162px;
+            margin-top: 54px;
+            background: $alpha;
+            color: $color-light;
+        }
+        &.alpha-mix {
+            margin-left: -108px;
+            margin-top: 0;
+            background: $alpha-mix;
+        }
+        &.gamma-mix {
+            margin-left: 0;
+            margin-top: -108px;
+            background: $gamma-mix;
+        }
+        &.gamma {
+            margin-left: 54px;
+            margin-top: -162px;
+            background: $gamma;
+            color: $color-light;
+        }
+    }
+}

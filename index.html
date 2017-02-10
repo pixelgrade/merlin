@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Merlin</title>
 
+    <link href="https://fonts.googleapis.com/css?family=Eczar:400,500|Gentium+Basic:400,700|Fira+Mono:400,500|Open+Sans:400,700" rel="stylesheet">
     <link rel="stylesheet" href="style.css"/>
 </head>
 
@@ -14,63 +15,71 @@
 
         <div class="merlin-color-picker">
             <p>Hey, I’m Merlin — a nice to have wizard!</p>
-            <p>I know you’re from Romania but that doesn’t matter now. I just want to help you create the perfect color scheme. Let’s pick a color mood first...</p>
+            <p>I know you’re from <em>Romania</em> but that doesn’t matter now. I just want to help you create the perfect color scheme. Let’s pick a color mood first...</p>
 
             <div class="choose-primary-color color-list">
                 <ul>
-                    <li>
+                    <li id="ch-red">
                         <a href="#"></a>
                     </li>
-                    <li>
+                    <li id="ch-orange">
                         <a href="#"></a>
                     </li>
-                    <li>
+                    <li id="ch-blue">
                         <a href="#"></a>
                     </li>
                 </ul>
+                <div class="tooltip" data-for="gen-red"><em>Red</em> symbolizes energy, vitality, cheer, excitement, adventure, warmth, and good health.</div>
             </div>
 
             <p>You seems joyful and enthusiastic, huh? I’m generating a nice set of colors variations out of your selection..</p>
 
             <div class="generated-colors color-list">
                 <ul>
-                    <li>
+                    <li id="gen-red">
                         <a href="#"></a>
                     </li>
-                    <li>
+                    <li id="gen-orange">
                         <a href="#"></a>
                     </li>
-                    <li>
+                    <li id="gen-blue">
                         <a href="#"></a>
                     </li>
                 </ul>
+                <div class="tooltip" data-for="gen-red"><em>Red</em> symbolizes energy, vitality, cheer, excitement, adventure, warmth, and good health.</div>
             </div>
 
-            <p>Yes — burning orange seems best! </p>
+            <p>Yes — <em>burning orange</em> seems best! </p>
             <p>Now choose one of the patterns generation below:</p>
 
             <div class="choose-pattern">
                 <ul>
                     <li>
-                        <div class="pattern-icon"></div>
-                        <div class="pattern-info">
-                            <h3>Standard</h3>
-                            <p>Keep only one accent color and generate black and white variations. Perfect in most of the cases.</p>
-                        </div>
+                        <a href="">
+                            <div class="pattern-icon standard"></div>
+                            <div class="pattern-info">
+                                <p class="pattern-title">Standard</p>
+                                <p>Keep only one accent color and generate black and white variations. Perfect in most of the cases.</p>
+                            </div>
+                        </a>
                     </li>
                     <li>
-                        <div class="pattern-icon"></div>
-                        <div class="pattern-info">
-                            <h3>Reverse</h3>
-                            <p>Keep one accent color but use it as a background color and generate black and white variations.</p>
-                        </div>
+                        <a href="">
+                            <div class="pattern-icon reverse"></div>
+                            <div class="pattern-info">
+                                <p class="pattern-title">Reverse</p>
+                                <p>Keep one accent color but use it as a background color and generate black and white variations.</p>
+                            </div>
+                        </a>
                     </li>
                     <li>
-                        <div class="pattern-icon"></div>
-                        <div class="pattern-info">
-                            <h3>Colorful</h3>
-                            <p>Keep only one accent color and generate black and white variations. Perfect in most of the cases.</p>
-                        </div>
+                        <a href="">
+                            <div class="pattern-icon colorful"></div>
+                            <div class="pattern-info">
+                                <p class="pattern-title">Colorful</p>
+                                <p>Keep only one accent color and generate black and white variations. Perfect in most of the cases.</p>
+                            </div>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -91,16 +100,16 @@
             <p>Here we go! Looking at this, it makes me wonder — can anyone do it better?</p>
 
             <div class="generated-color-palette">
-                <span class="alpha"></span>
-                <span class="alpha-mix"></span>
-                <span class="beta"></span>
-                <span class="gamma-mix"></span>
-                <span class="gamma"></span>
+                <span class="alpha">Alpha</span>
+                <span class="alpha-mix">Mixed</span>
+                <span class="beta">Beta</span>
+                <span class="gamma-mix">Mixed</span>
+                <span class="gamma">Gamma</span>
             </div>
 
             <p>Taking into consideration many color theory rules, combined with your personal input, I generated an unique color palette mapped to a set of HTML elements defined in the config file.</p>
             <p>
-                <a href="">Download the image</a>
+                <a href="">Download the image</a> &nbsp;&nbsp;&nbsp;
                 <a href="">Start Over</a>
             </p>
 
@@ -108,8 +117,8 @@
 
         <div class="merlin-display-demo">
             <header>
-                <div class=""></div>
-                <nav>
+                <div class="time">13:44 PM</div>
+                <nav class="main-nav">
                     <ul>
                         <li><a href="">Home</a></li>
                         <li><a href="">About</a></li>
@@ -127,21 +136,21 @@
             <h1>Meet Merlin! Your smartest style kit generator.</h1>
 
             <div class="grid">
-                <div class="col-md-6">
+                <div class="col">
                     <p>Styling Options are to make your decisions even harder. Merlin is taking the burden from you and using simple triggers, generates the perfect style kit for your website.</p>
                     <p>It’s based on procedural algorithms to generate harmonious color palletes and picking the right fonts for all your page elements. Give it a try! palletes and picking the right fonts for all your page</p>
                 </div>
-                <div class="col-md-6">
+                <div class="col">
                     <p>Styling Options are to make your decisions even harder generates the perfect.</p>
                     <p>Merlin is taking the burden from you and using simple triggers, generates the perfect style kit for your website. Styling Options are to make your decisions even harder. Merlin is taking the burden from you and using simple triggers generates the perfect style kit for your website.</p>
                 </div>
             </div>
 
-            <p><a href="">Read the process</a></p>
+            <p><a href="" class="big-link">Read the process</a></p>
 
             <footer>
-                <p>Created by <a href="">Pixelgrade</a> Crew.</p>
-                <p><a href="">github link</a></p>
+                <p>Created by <a href="http://pixelgrade.com">Pixelgrade</a> Crew.</p>
+                <p><a href=""><i class="fa fa-github"></i></a></p>
             </footer>
         </div>
     </div>

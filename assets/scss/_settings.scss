@@ -3,16 +3,19 @@
 // ==============================
 
 // typography settings
-$font-size:             16px;
+$font-size:             18px;
 $line-height:           1.5;
 
 // baseline
 $baseline-unit:         12px;
 
 // colors
-$color-dark:            #252525;
-$color-gray:            #757575;
-$color-light:           #EBEBEB;
+$color-dark:            #1F2025;
+$color-gray:            #F7F7F7;
+$color-light:           #FFFFFF;
+$border-color:          #EBEBEB;
+$accent-color:          #2196F3;
+$black:                 #000000;
 
 // Debug settings
 $debug:                 false;
@@ -24,6 +27,8 @@ $breakpoints: (
     lap:                50em,
     desk:               80em
 );
+$lap: 						899px;
+$desk: 						1359px;
 
 // https://css-tricks.com/handling-z-index/
 $zindex: (
@@ -50,3 +55,10 @@ $typeline-rules: (
 // misc
 $transition--micro:     .15s;
 $transition--macro:     .3s;
+
+// generated color palette
+$alpha:     #FF392A;
+$alpha-mix: #FDEDEC;
+$beta:      #FFFFFF;
+$gamma-mix: #F3F3F3;
+$gamma:     #404049;

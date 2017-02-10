@@ -1,0 +1,77 @@
+.merlin-display-demo {
+    header {
+        display: flex;
+        padding-bottom: 20px;
+        margin-bottom: 45px;
+        border-bottom: 2px solid $black;
+        font-family: 'Open Sans';
+        @include font-size(13px);
+        text-transform: uppercase;
+        font-weight: 700;
+        text-decoration: none;
+
+        .time {
+        }
+
+        .main-nav {
+            ul {
+                display: flex;
+                li {
+                    margin-left: 20px;
+                }
+            }
+            a {
+                text-decoration: none;
+            }
+        }
+    }
+
+    footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 40px;
+        color: $color-light;
+        background: $black;
+        @include font-size(16px);
+        font-weight: 600;
+
+        a {
+            color: $color-light;
+        }
+
+        p {
+            margin-bottom: 0;
+        }
+
+        &:before {
+            position: absolute;
+            right: 35px;
+            top: -50px;
+            width: 70px;
+            height: 55px;
+            content: '';
+            display: block;
+            background: url('assets/img/hat.svg') left top no-repeat;
+            background-size: 70px 55px;
+        }
+    }
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+
+    .col {
+        width: 50%;
+        padding: 0 15px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .grid .col {
+        width: 100%;
+    }
+}

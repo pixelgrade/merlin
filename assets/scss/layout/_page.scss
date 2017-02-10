@@ -1,0 +1,119 @@
+.content {
+    position: relative;
+}
+
+%content-item {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    min-height: 100%;
+    width: 50%;
+    padding: 40px;
+}
+
+.merlin-color-picker {
+    @extend %content-item;
+
+    background: $color-gray;
+    box-shadow: 0 2px 30px 0 rgba(0,0,0,0.15);
+    z-index: 2;
+}
+
+.merlin-display-demo {
+    @extend %content-item;
+
+    position: fixed;
+    right: 0;
+    left: auto;
+    background: $color-light;
+}
+
+@include query-below($lap) {
+    .merlin-color-picker,
+    .merlin-display-demo {
+        position: relative;
+        width: 100%;
+    }
+}
+
+%content-box {
+    background-color: $color-light;
+    box-shadow: 0 2px 30px 0 rgba(0,0,0,0.15);
+    border-radius: 8px;
+}
+
+%pattern-icon {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    margin-right: 20px;
+    background-color: $color-light;
+    border-radius: 100%;
+    box-shadow: 0 2px 30px 0 rgba(0,0,0,0.15);
+}
+
+.choose-pattern {
+    ul {
+        @extend %content-box;
+        margin-bottom: 45px;
+
+        > li {
+            border-bottom: 1px solid $border-color;
+            padding: 15px;
+            @include font-size(16px);
+
+            &:first-child {
+                border-radius: 8px 8px 0 0;
+            }
+
+            &:last-child {
+                border: none;
+                border-radius: 0 0 8px 8px;
+            }
+
+            &:hover {
+                background-color: $accent-color;
+                a {
+                    color: $color-light;
+                }
+            }
+
+            a {
+                display: flex;
+                text-decoration: none;
+                color: $color-dark;
+            }
+
+            p {
+                margin-bottom: 10px;
+
+                &.pattern-title {
+                    font-weight: bold;
+                    @include font-size(18px);
+                }
+            }
+            p + p {
+                margin-bottom: 0;
+            }
+            .pattern-icon {
+                @extend %pattern-icon;
+
+                &.reverse {
+                    background-color: $color-dark;
+                }
+            }
+        }
+    }
+}
+
+.terminal-style {
+    background-color: #0A0A0B;
+    padding: 12px 20px;
+    margin-bottom: 22px;
+
+    font-family: "Fira Mono";
+    font-weight: 500;
+    color: $color-light;
+    @include font-size(12px);
+}

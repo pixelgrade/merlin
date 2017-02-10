@@ -3,10 +3,39 @@ $baseline-grid:             false               !default;
 $baseline-grid-color:       rgba(0,0,0,0.1)     !default;
 $baseline-debug:            false               !default;
 
+$base-font-size:        18px;
+$base-line-height: 	    24px;
+
+$baseline-scale:            2 !default;
+$baseline-use-ems:          false !default;
+
+// this value may vary for each font
+// unitless value relative to 1em
+$cap-height: 		0.671;
+
 @if $baseline-debug == true {
     html {
         height: 100%;
     }
+}
+
+@mixin font-size($font-size, $base-font-size: $base-font-size, $base-line-height: $base-line-height) {
+
+    @if (unit($base-line-height) == px) {
+        $base-line-height: $base-line-height / $base-font-size;
+    }
+
+    $baseline-rhythm: $base-font-size * $base-line-height / $baseline-scale;
+
+    // number of rhythm units that can fit the font-size
+    $lines: ceil(($font-size + 0.001px) / $baseline-rhythm);
+
+    // calculate the new line-height
+    $line-height: $baseline-rhythm * $lines / $font-size;
+
+    // use the results
+    font-size: $font-size * 1em / $base-font-size;
+    line-height: $line-height;
 }
 
 @mixin baseline($baseline-font-size: 16px, $baseline-line-height: 1.25, $cap-height-ratio: 0.72, $units: 3) {
@@ -38,4 +67,17 @@ $baseline-debug:            false               !default;
             background: rgba(adjust-hue(#F00, $units * 70), 0.5);
         }
     }
+}
+
+@mixin rhythm($property, $units, $convert-to-ems: $base-font-size, $base-line-height: $base-line-height) {
+
+    $baseline-rhythm:   $base-line-height / $baseline-scale;
+
+    // if use-ems is
+    @if ($convert-to-ems == false) {
+        #{$property}: $units * $baseline-rhythm;
+    } @else {
+        #{$property}: $units * $baseline-rhythm / $convert-to-ems + em;
+    }
+
 }
